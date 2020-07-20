@@ -1,5 +1,6 @@
 import React from 'react';
 // setup file
+
 import { configure, shallow, ShallowWrapper } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
