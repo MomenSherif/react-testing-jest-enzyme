@@ -56,7 +56,7 @@ test('counter starts at 0', () => {
   expect(initialCounterState).toBe(0);
 });
 
-test('clicking button increments counter display', () => {
+test('clicking increment button increments counter display', () => {
   const counter = 7;
   const wrapper = setup(null, { counter });
 
