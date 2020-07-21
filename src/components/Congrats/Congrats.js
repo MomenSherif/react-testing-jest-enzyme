@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'; // ES6
 
 const Congrats = ({ success }) => {
   return (
-    <div data-test='component-congrats'>{success && 'Congraulations!'}</div>
+    <div className='alert alert-success' data-test='component-congrats'>
+      {success && 'Congraulations!'}
+    </div>
   );
 };
 
