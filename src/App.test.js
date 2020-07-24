@@ -1,10 +1,7 @@
 import React from 'react';
 // setup file
 
-import { configure, shallow, ShallowWrapper } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import { shallow } from 'enzyme';
 import App from './App';
 
 /**
@@ -31,57 +28,4 @@ test('renders withoud error', () => {
   const wrapper = setup();
   const appComponent = fintByTestAttr(wrapper, 'component-app');
   expect(appComponent).toHaveLength(1);
-});
-
-test('renders increment button', () => {
-  const wrapper = setup();
-  const button = fintByTestAttr(wrapper, 'increment-button');
-  expect(button).toHaveLength(1);
-});
-
-test('renders decrement button', () => {
-  const wrapper = setup();
-  const button = fintByTestAttr(wrapper, 'decrement-button');
-  expect(button).toHaveLength(1);
-});
-
-test('renders counter display', () => {
-  const wrapper = setup();
-  const counterDisplay = fintByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay).toHaveLength(1);
-});
-
-test('counter starts at 0', () => {
-  const wrapper = setup();
-  const initialCounterState = wrapper.state('counter');
-  expect(initialCounterState).toBe(0);
-});
-
-test('clicking increment button increments counter display', () => {
-  const counter = 7;
-  const wrapper = setup(null, { counter });
-
-  // find button and click
-  const button = fintByTestAttr(wrapper, 'increment-button');
-  button.simulate('click');
-
-  // find display and test value
-  const counterDisplay = fintByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay.text()).toContain(counter + 1);
-});
-
-test('clicking decrement button decrements counter display', () => {
-  const counter = 7;
-  const wrapper = setup(null, { counter });
-  const button = fintByTestAttr(wrapper, 'decrement-button');
-  button.simulate('click');
-  const counterDisplay = fintByTestAttr(wrapper, 'counter-display');
-  expect(counterDisplay.text()).toContain(counter - 1);
-});
-
-test('decrement button should be disabled it counter is 0', () => {
-  const wrapper = setup(null, { counter: 0 });
-  const button = fintByTestAttr(wrapper, 'decrement-button');
-  expect(button.html()).toContain('disabled');
-  // expect(button).toBeDisabled()  ** Not Working issue opened in enzyme **
 });
