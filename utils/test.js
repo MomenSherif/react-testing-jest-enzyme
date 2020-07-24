@@ -1,4 +1,16 @@
 import checkPropTypes from 'check-prop-types';
+import { createStore, applyMiddleware } from 'redux';
+
+import { middlewares } from '../src/configureStore';
+import rootReducer from '../src/reducers';
+
+export const storeFactory = (initialState) => {
+  return createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(...middlewares)
+  );
+};
 
 /**
  * Returns ShalowWrapper containing node(s) with the given data-test attribute
